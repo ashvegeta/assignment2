@@ -1,0 +1,26 @@
+services:
+        drupal:
+                image: drupal:8-apache
+                ports:
+                        - 8080:80
+                volumes:
+                        - var/www/html/modules
+                        - var/www/html/profiles
+                        - var/www/html/themes
+                        - var/www/hmml/sites
+                networks:
+                        - ashik_arun
+
+        postgrel:
+                image: postgres:10
+                environment:
+                        POSTGRES_PASSWORD: example
+                volumes:
+                        - /var/lib/postgresql/data
+                networks:
+                        - ashik_arun
+
+
+networks:
+        ashik_arun:
+                driver: bridge
